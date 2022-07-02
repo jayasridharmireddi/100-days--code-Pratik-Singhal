@@ -1,0 +1,17 @@
+We have to keep track of the highest reachable element,,,, the elemnt we are indexing cant go past that, just checl for that condition
+
+class Solution {
+    public boolean canJump(int[] nums) {
+        int n= nums.length,max_reach=0;
+        for(int i=0;i<n;i++){
+            if(i>max_reach){
+                return false;
+            }
+            max_reach=Math.max(max_reach,i+nums[i]);
+        }
+        return true; 
+    }
+}
+
+
+TC-O(1)
