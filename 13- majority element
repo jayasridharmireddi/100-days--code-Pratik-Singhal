@@ -1,0 +1,42 @@
+class Solution {
+    public int majorityElement(int[] nums) {
+        /*int max=0,n=nums.length,l=0;
+        if(n<=1){
+            return nums[0];
+        }
+        for(int i=0;i<n;i++){
+            int t=0;
+            for(int j=i+1;j<n;j++){
+                if(nums[i]==nums[j]){        --O(n*n) but aint working tho
+                    t++;
+                }
+            }
+            if(t>max){
+                max=t;
+                l=nums[i];
+            }
+        }
+        return l;   */  
+        
+       /* 
+        Arrays.sort(nums);
+        return nums[nums.length/2];          --O(nlogn)            
+        */
+        int cand=Integer.MIN_VALUE,freq=0;
+        for(int i:nums){
+            
+            if(i==cand){
+                freq++;
+            }                                // Moore's voting algo
+            else if(freq==0){
+                cand=i;
+                freq=1;
+            }
+            else{
+                freq--;
+            }
+            
+        }
+        return cand;
+    }
+}
