@@ -1,0 +1,20 @@
+rec--
+
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> li= new ArrayList<>();
+        inord(root,li);
+        return li;
+    }
+    public void inord(TreeNode root,List<Integer> li){
+        if(root==null){
+            return;
+        }
+        
+        inord(root.left,li);
+        li.add(root.val);
+        inord(root.right,li);
+    }
+}
+
+tc-O(N),SC-O(H)
