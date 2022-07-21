@@ -1,0 +1,65 @@
+O(logn) approach
+
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int L=findL(nums,target);
+        int R=findR(nums,target);
+        return new int[]{L,R};
+    }
+    int findL(int[] nums,int target){
+        int st=0,end=nums.length-1,ans=-1;
+        while(st<=end){
+            int mid=(st+end)/2;
+            if(nums[mid]<target){
+                st=mid+1;
+            }else if(nums[mid]>target){
+                end=mid-1;
+            }else{
+                ans=mid;
+                end=mid-1;
+            }
+        }
+        return ans;
+    }
+     int findR(int[] nums,int target){
+        int st=0,end=nums.length-1,ans=-1;
+        while(st<=end){
+            int mid=(st+end)/2;
+            if(nums[mid]<target){
+                st=mid+1;
+            }else if(nums[mid]>target){
+                end=mid-1;
+            }else{
+                ans=mid;
+                st=mid+1;
+            }
+        }
+        return ans;
+    }
+}
+
+
+
+O(N)- TC
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int n=nums.length;
+        int arr[]={-1,-1};
+        for(int i=0;i<n;i++){
+            if(nums[i]==target){
+                arr[0]=i;
+                break;
+            }
+        }
+        if(arr[0]==-1){
+            return arr;
+        }
+        for(int j=n-1;j>=arr[0];j--){
+            if(nums[j]==target){
+                arr[1]=j;
+                break;
+            }
+        }
+        return arr;
+    }
+}
